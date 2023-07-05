@@ -1,0 +1,37 @@
+<h1 style="text-align: center;width: 100%;">Search multiple fields</h1>
+
+<form method="GET" action="/" style="justify-content: space-around;">
+    <input type="search" placeholder="search student via name, age, section, address" name="search">
+    <button type="submit" style="background-color: red;color: white;">
+        search
+    </button>
+    {% if search %}
+    {% for i in search %}
+    <p style="color: green;">{{i.name}}-{{i.address}} -{{i.section}}</p>
+    <img src="https://testdjangobucket1.s3.ap-south-1.amazonaws.com/{{i.image}}" style="max-width: 100px;"/>
+    {% endfor %}
+    {% endif %}
+</form>
+
+<p>avg = {{avg_age}}</p>
+<p>Minimum = {{min_age}}</p>
+<p>Maxium = {{max_age}}</p>
+<p>Sum = {{sum_age}}</p>
+
+<head>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Le4R-gmAAAAAGbz87fD8R6Lp5rq8lfMUpvquQbq"></script>
+    ...
+  </head>
+  
+  <script>
+    function onClick(e) {
+      e.preventDefault();
+      grecaptcha.enterprise.ready(async () => {
+        const token = await grecaptcha.enterprise.execute('6Le4R-gmAAAAAGbz87fD8R6Lp5rq8lfMUpvquQbq', {action: 'LOGIN'});
+        // IMPORTANT: The 'token' that results from execute is an encrypted response sent by
+        // reCAPTCHA Enterprise to the end user's browser.
+        // This token must be validated by creating an assessment.
+        // See https://cloud.google.com/recaptcha-enterprise/docs/create-assessment
+      });
+    }
+  </script>
