@@ -16,6 +16,7 @@ class SearchListView(viewsets.GenericViewSet,
                      mixins.CreateModelMixin,
                      mixins.RetrieveModelMixin,
                      mixins.DestroyModelMixin):
+    
     # Allows authenticated users to have full access, while read-only access is granted to unauthenticated users or get request.
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,] 
 
